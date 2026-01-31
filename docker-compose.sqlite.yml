@@ -1,0 +1,29 @@
+# PHASE_1_CONFIG_ONLY
+# MES Configuration Layer - Docker Compose (SQLite version for development)
+
+version: '3.8'
+
+services:
+  mes-config:
+    build: .
+    container_name: mes-config-layer
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./data/mes_config.db
+      - API_V1_PREFIX=/api/v1/mes-config
+      - DEBUG=True
+    volumes:
+      - ./mes_config:/app/mes_config
+      - ./main.py:/app/main.py
+      - sqlite-data:/app/data
+    networks:
+      - mes-network
+    restart: unless-stopped
+
+networks:
+  mes-network:
+    driver: bridge
+
+volumes:
+  sqlite-data:
