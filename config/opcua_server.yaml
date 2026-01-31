@@ -1,0 +1,85 @@
+# OPC UA Server Configuration
+
+endpoint: "opc.tcp://0.0.0.0:4840/freeopcua/server/"
+server_name: "Factory MES OPC UA Server"
+namespace: "http://factory.mes"
+security_enabled: false
+
+# Define server nodes
+nodes:
+  # Temperature sensors
+  - node_id: "Temperature1"
+    browse_name: "Temperature1"
+    display_name: "Zone 1 Temperature"
+    data_type: "float"
+    initial_value: 25.0
+    writable: false
+    description: "Temperature sensor in zone 1 (°C)"
+  
+  - node_id: "Temperature2"
+    browse_name: "Temperature2"
+    display_name: "Zone 2 Temperature"
+    data_type: "float"
+    initial_value: 23.5
+    writable: false
+    description: "Temperature sensor in zone 2 (°C)"
+  
+  # Pressure sensors
+  - node_id: "Pressure1"
+    browse_name: "Pressure1"
+    display_name: "Main Line Pressure"
+    data_type: "float"
+    initial_value: 6.5
+    writable: false
+    description: "Main line pressure (bar)"
+  
+  # Motor status
+  - node_id: "Motor1Status"
+    browse_name: "Motor1Status"
+    display_name: "Conveyor Motor Status"
+    data_type: "bool"
+    initial_value: false
+    writable: true
+    description: "Conveyor motor running status"
+  
+  - node_id: "Motor1Speed"
+    browse_name: "Motor1Speed"
+    display_name: "Conveyor Motor Speed"
+    data_type: "float"
+    initial_value: 0.0
+    writable: true
+    description: "Conveyor motor speed (RPM)"
+  
+  # Production counters
+  - node_id: "ProductionCount"
+    browse_name: "ProductionCount"
+    display_name: "Production Counter"
+    data_type: "int"
+    initial_value: 0
+    writable: true
+    description: "Total production count"
+  
+  - node_id: "ProductionRate"
+    browse_name: "ProductionRate"
+    display_name: "Production Rate"
+    data_type: "float"
+    initial_value: 0.0
+    writable: false
+    description: "Current production rate (units/hour)"
+  
+  # Machine status
+  - node_id: "MachineRunning"
+    browse_name: "MachineRunning"
+    display_name: "Machine Running"
+    data_type: "bool"
+    initial_value: false
+    writable: true
+    description: "Machine running status"
+  
+  - node_id: "MachineMode"
+    browse_name: "MachineMode"
+    display_name: "Machine Mode"
+    data_type: "int"
+    initial_value: 0
+    writable: true
+    description: "Machine mode (0=Stop, 1=Auto, 2=Manual)"

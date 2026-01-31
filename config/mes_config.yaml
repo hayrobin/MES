@@ -1,0 +1,39 @@
+# MES Configuration
+
+# Application settings
+MES_APP_NAME=Factory MES
+MES_APP_VERSION=1.0.0
+MES_DEBUG=false
+
+# Logging
+MES_LOG_LEVEL=INFO
+MES_JSON_LOGGING=false
+
+# Database - SQLite (for development)
+MES_DATABASE__TYPE=sqlite
+MES_DATABASE__DATABASE=mes.db
+
+# Database - PostgreSQL (for production)
+# MES_DATABASE__TYPE=postgresql
+# MES_DATABASE__HOST=localhost
+# MES_DATABASE__PORT=5432
+# MES_DATABASE__DATABASE=mes_db
+# MES_DATABASE__USERNAME=mes_user
+# MES_DATABASE__PASSWORD=mes_password
+# MES_DATABASE__POOL_SIZE=5
+# MES_DATABASE__MAX_OVERFLOW=10
+
+# API Server
+MES_API__HOST=0.0.0.0
+MES_API__PORT=8000
+MES_API__RELOAD=false
+MES_API__WORKERS=1
+MES_API__LOG_LEVEL=info
+
+# Configuration file paths
+MES_OPCUA_SERVER_CONFIG=config/opcua_server.yaml
+MES_OPCUA_CLIENTS_CONFIG=config/opcua_clients.yaml
+MES_MODBUS_DEVICES_CONFIG=config/modbus_devices.yaml
+
+# Data retention
+MES_HISTORICAL_DATA_RETENTION_DAYS=30
