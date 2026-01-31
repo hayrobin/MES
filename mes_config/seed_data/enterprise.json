@@ -1,0 +1,511 @@
+{
+  "enterprises": [
+    {
+      "id": 1,
+      "code": "ABC-MFGCORP",
+      "name": "ABC Manufacturing Corp",
+      "description": "Leading automotive parts manufacturer with multiple production facilities",
+      "erp_code": "ENT-001",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z",
+      "updated_by": "system_admin",
+      "updated_at": "2024-01-01T08:00:00Z"
+    }
+  ],
+  "sites": [
+    {
+      "id": 1,
+      "enterprise_id": 1,
+      "code": "PLANT-NORTH",
+      "name": "Plant North",
+      "description": "Northern manufacturing facility specializing in metal components",
+      "address": "1500 Industrial Parkway, Detroit, MI 48201",
+      "timezone": "America/New_York",
+      "erp_code": "SITE-001",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z",
+      "updated_by": "system_admin",
+      "updated_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "enterprise_id": 1,
+      "code": "PLANT-SOUTH",
+      "name": "Plant South",
+      "description": "Southern manufacturing facility focused on assembly and packaging",
+      "address": "2750 Manufacturing Drive, Chicago, IL 60601",
+      "timezone": "America/Chicago",
+      "erp_code": "SITE-002",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z",
+      "updated_by": "system_admin",
+      "updated_at": "2024-01-01T08:00:00Z"
+    }
+  ],
+  "areas": [
+    {
+      "id": 1,
+      "site_id": 1,
+      "code": "PN-ASSEMBLY",
+      "name": "Assembly",
+      "description": "Component assembly operations",
+      "erp_code": "AREA-001",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "site_id": 1,
+      "code": "PN-MACHINING",
+      "name": "Machining",
+      "description": "CNC machining and metal cutting operations",
+      "erp_code": "AREA-002",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 3,
+      "site_id": 1,
+      "code": "PN-PACKAGING",
+      "name": "Packaging",
+      "description": "Final packaging and shipping preparation",
+      "erp_code": "AREA-003",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 4,
+      "site_id": 2,
+      "code": "PS-ASSEMBLY",
+      "name": "Assembly",
+      "description": "Final product assembly operations",
+      "erp_code": "AREA-004",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 5,
+      "site_id": 2,
+      "code": "PS-MACHINING",
+      "name": "Machining",
+      "description": "Precision machining center",
+      "erp_code": "AREA-005",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 6,
+      "site_id": 2,
+      "code": "PS-PACKAGING",
+      "name": "Packaging",
+      "description": "Automated packaging line",
+      "erp_code": "AREA-006",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    }
+  ],
+  "lines": [
+    {
+      "id": 1,
+      "area_id": 1,
+      "code": "PN-ASM-L01",
+      "name": "Assembly Line 1",
+      "description": "Manual assembly workstations for brake components",
+      "erp_code": "LINE-001",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "area_id": 1,
+      "code": "PN-ASM-L02",
+      "name": "Assembly Line 2",
+      "description": "Semi-automated assembly for steering components",
+      "erp_code": "LINE-002",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 3,
+      "area_id": 2,
+      "code": "PN-MCH-L01",
+      "name": "Machining Line 1",
+      "description": "CNC milling and turning centers",
+      "erp_code": "LINE-003",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 4,
+      "area_id": 2,
+      "code": "PN-MCH-L02",
+      "name": "Machining Line 2",
+      "description": "High-precision grinding and finishing",
+      "erp_code": "LINE-004",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 5,
+      "area_id": 3,
+      "code": "PN-PKG-L01",
+      "name": "Packaging Line 1",
+      "description": "Primary packaging and labeling",
+      "erp_code": "LINE-005",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 6,
+      "area_id": 3,
+      "code": "PN-PKG-L02",
+      "name": "Packaging Line 2",
+      "description": "Palletizing and shipping prep",
+      "erp_code": "LINE-006",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 7,
+      "area_id": 4,
+      "code": "PS-ASM-L01",
+      "name": "Assembly Line 1",
+      "description": "Automated assembly cell for final products",
+      "erp_code": "LINE-007",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 8,
+      "area_id": 4,
+      "code": "PS-ASM-L02",
+      "name": "Assembly Line 2",
+      "description": "Flexible assembly line for product variants",
+      "erp_code": "LINE-008",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 9,
+      "area_id": 5,
+      "code": "PS-MCH-L01",
+      "name": "Machining Line 1",
+      "description": "Multi-spindle machining centers",
+      "erp_code": "LINE-009",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 10,
+      "area_id": 5,
+      "code": "PS-MCH-L02",
+      "name": "Machining Line 2",
+      "description": "Precision boring and drilling",
+      "erp_code": "LINE-010",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 11,
+      "area_id": 6,
+      "code": "PS-PKG-L01",
+      "name": "Packaging Line 1",
+      "description": "High-speed blister packaging",
+      "erp_code": "LINE-011",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 12,
+      "area_id": 6,
+      "code": "PS-PKG-L02",
+      "name": "Packaging Line 2",
+      "description": "Custom packaging and kitting",
+      "erp_code": "LINE-012",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    }
+  ],
+  "departments": [
+    {
+      "id": 1,
+      "enterprise_id": 1,
+      "code": "PRODUCTION",
+      "name": "Production",
+      "description": "Manufacturing operations department",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "enterprise_id": 1,
+      "code": "QUALITY",
+      "name": "Quality",
+      "description": "Quality assurance and control",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 3,
+      "enterprise_id": 1,
+      "code": "MAINTENANCE",
+      "name": "Maintenance",
+      "description": "Equipment maintenance and engineering",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 4,
+      "enterprise_id": 1,
+      "code": "PLANNING",
+      "name": "Planning",
+      "description": "Production planning and scheduling",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    }
+  ],
+  "shift_calendars": [
+    {
+      "id": 1,
+      "site_id": 1,
+      "code": "PN-WEEKDAY-3SHIFT",
+      "name": "Plant North Weekday 3-Shift",
+      "description": "Standard weekday three-shift operation",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "site_id": 2,
+      "code": "PS-WEEKDAY-3SHIFT",
+      "name": "Plant South Weekday 3-Shift",
+      "description": "Standard weekday three-shift operation",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    }
+  ],
+  "shifts": [
+    {
+      "id": 1,
+      "calendar_id": 1,
+      "code": "MORNING",
+      "name": "Morning Shift",
+      "description": "Day shift operations",
+      "start_time": "06:00:00",
+      "end_time": "14:00:00",
+      "days_of_week": [1, 2, 3, 4, 5],
+      "is_active": true,
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "calendar_id": 1,
+      "code": "AFTERNOON",
+      "name": "Afternoon Shift",
+      "description": "Afternoon production shift",
+      "start_time": "14:00:00",
+      "end_time": "22:00:00",
+      "days_of_week": [1, 2, 3, 4, 5],
+      "is_active": true,
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 3,
+      "calendar_id": 1,
+      "code": "NIGHT",
+      "name": "Night Shift",
+      "description": "Overnight production shift",
+      "start_time": "22:00:00",
+      "end_time": "06:00:00",
+      "days_of_week": [1, 2, 3, 4, 5],
+      "is_active": true,
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 4,
+      "calendar_id": 2,
+      "code": "MORNING",
+      "name": "Morning Shift",
+      "description": "Day shift operations",
+      "start_time": "06:00:00",
+      "end_time": "14:00:00",
+      "days_of_week": [1, 2, 3, 4, 5],
+      "is_active": true,
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 5,
+      "calendar_id": 2,
+      "code": "AFTERNOON",
+      "name": "Afternoon Shift",
+      "description": "Afternoon production shift",
+      "start_time": "14:00:00",
+      "end_time": "22:00:00",
+      "days_of_week": [1, 2, 3, 4, 5],
+      "is_active": true,
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 6,
+      "calendar_id": 2,
+      "code": "NIGHT",
+      "name": "Night Shift",
+      "description": "Overnight production shift",
+      "start_time": "22:00:00",
+      "end_time": "06:00:00",
+      "days_of_week": [1, 2, 3, 4, 5],
+      "is_active": true,
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    }
+  ],
+  "units_of_measure": [
+    {
+      "id": 1,
+      "code": "PCS",
+      "name": "Pieces",
+      "description": "Individual countable units",
+      "uom_type": "DISCRETE",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 2,
+      "code": "KG",
+      "name": "Kilogram",
+      "description": "Weight measurement in kilograms",
+      "uom_type": "CONTINUOUS",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 3,
+      "code": "L",
+      "name": "Liter",
+      "description": "Volume measurement in liters",
+      "uom_type": "CONTINUOUS",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 4,
+      "code": "M",
+      "name": "Meter",
+      "description": "Length measurement in meters",
+      "uom_type": "CONTINUOUS",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 5,
+      "code": "HR",
+      "name": "Hour",
+      "description": "Time measurement in hours",
+      "uom_type": "TIME",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 6,
+      "code": "MIN",
+      "name": "Minute",
+      "description": "Time measurement in minutes",
+      "uom_type": "TIME",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 7,
+      "code": "TON",
+      "name": "Ton",
+      "description": "Weight measurement in metric tons",
+      "uom_type": "CONTINUOUS",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    },
+    {
+      "id": 8,
+      "code": "CYCLE",
+      "name": "Cycle",
+      "description": "Machine cycle count",
+      "uom_type": "DISCRETE",
+      "is_active": true,
+      "approval_status": "APPROVED",
+      "created_by": "system_admin",
+      "created_at": "2024-01-01T08:00:00Z"
+    }
+  ]
+}
