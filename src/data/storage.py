@@ -32,21 +32,23 @@ class DatabaseStorage:
             # Build connection string
             if self.config.type == "sqlite":
                 db_url = f"sqlite+aiosqlite:///{self.config.database}"
+                # SQLite doesn't support pool_size/max_overflow
+                engine_kwargs = {"echo": False}
             elif self.config.type == "postgresql":
                 db_url = (
                     f"postgresql+asyncpg://{self.config.username}:{self.config.password}"
                     f"@{self.config.host}:{self.config.port}/{self.config.database}"
                 )
+                engine_kwargs = {
+                    "pool_size": self.config.pool_size,
+                    "max_overflow": self.config.max_overflow,
+                    "echo": False
+                }
             else:
                 raise StorageError(f"Unsupported database type: {self.config.type}")
             
             # Create engine
-            self.engine = create_async_engine(
-                db_url,
-                pool_size=self.config.pool_size,
-                max_overflow=self.config.max_overflow,
-                echo=False
-            )
+            self.engine = create_async_engine(db_url, **engine_kwargs)
             
             # Create session factory
             self.session_factory = async_sessionmaker(
@@ -334,7 +336,7 @@ class DatabaseStorage:
                 device_id=device_id,
                 severity=severity,
                 message=message,
-                metadata=metadata
+                alarm_metadata=metadata
             )
             session.add(alarm)
             await session.commit()

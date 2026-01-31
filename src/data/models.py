@@ -112,7 +112,7 @@ class ProductionEvent(Base):
     device_id = Column(Integer, ForeignKey("devices.id"), nullable=True, index=True)
     product_id = Column(String(100), nullable=True)
     quantity = Column(Integer, nullable=True)
-    metadata = Column(JSON, nullable=True)
+    event_metadata = Column(JSON, nullable=True)
     timestamp = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)
 
@@ -131,6 +131,6 @@ class Alarm(Base):
     acknowledged_by = Column(String(100), nullable=True)
     resolved = Column(Boolean, default=False, index=True)
     resolved_at = Column(DateTime, nullable=True)
-    metadata = Column(JSON, nullable=True)
+    alarm_metadata = Column(JSON, nullable=True)
     timestamp = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
     created_at = Column(DateTime, default=datetime.utcnow, nullable=False)

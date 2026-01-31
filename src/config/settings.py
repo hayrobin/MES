@@ -123,7 +123,8 @@ class MESSettings(BaseSettings):
     # Data retention
     historical_data_retention_days: int = 30
     
-    class Config:
-        env_prefix = "MES_"
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+    model_config = {
+        "env_prefix": "MES_",
+        "env_file": ".env",
+        "env_file_encoding": "utf-8"
+    }
