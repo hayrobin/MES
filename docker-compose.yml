@@ -1,0 +1,50 @@
+# PHASE_1_CONFIG_ONLY
+# MES Configuration Layer - Docker Compose
+
+version: '3.8'
+
+services:
+  mes-config:
+    build: .
+    container_name: mes-config-layer
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://mes_user:mes_password@postgres:5432/mes_config
+      - API_V1_PREFIX=/api/v1/mes-config
+      - DEBUG=True
+    depends_on:
+      - postgres
+    volumes:
+      - ./mes_config:/app/mes_config
+      - ./main.py:/app/main.py
+    networks:
+      - mes-network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: mes-postgres
+    environment:
+      - POSTGRES_USER=mes_user
+      - POSTGRES_PASSWORD=mes_password
+      - POSTGRES_DB=mes_config
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - mes-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mes_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  mes-network:
+    driver: bridge
+
+volumes:
+  postgres-data:

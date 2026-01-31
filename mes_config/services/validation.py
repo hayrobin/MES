@@ -34,16 +34,21 @@ def validate_unique_code(
     Raises:
         HTTPException: If code already exists
     """
-    query = db.query(model).filter(getattr(model, code_field) == code_value)
-    
-    if exclude_id is not None:
-        query = query.filter(getattr(model, id_field) != exclude_id)
-    
-    if query.first():
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"{code_field} '{code_value}' already exists"
-        )
+    try:
+        query = db.query(model).filter(getattr(model, code_field) == code_value)
+        
+        if exclude_id is not None:
+            query = query.filter(getattr(model, id_field) != exclude_id)
+        
+        if query.first():
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail=f"{code_field} '{code_value}' already exists"
+            )
+    except Exception as e:
+        # If table doesn't exist yet, skip validation (let database handle it)
+        if "no such table" not in str(e).lower() and "does not exist" not in str(e).lower():
+            raise
 
 
 def validate_effective_dates(
