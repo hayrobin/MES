@@ -112,7 +112,10 @@ class CRUDBase(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         obj.approval_status = ApprovalStatus.ARCHIVED
         obj.updated_by = deleted_by
         obj.updated_at = datetime.utcnow()
-        obj.effective_to = datetime.utcnow()
+        
+        # Only set effective_to if not already set
+        if hasattr(obj, 'effective_to') and obj.effective_to is None:
+            obj.effective_to = datetime.utcnow()
         
         if hasattr(obj, 'is_active'):
             obj.is_active = 0

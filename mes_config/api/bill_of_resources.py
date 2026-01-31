@@ -13,7 +13,6 @@ from sqlalchemy.orm import Session
 from mes_config.database import get_db
 from mes_config.models import bill_of_resources as models
 from mes_config.schemas import bill_of_resources as schemas
-from mes_config.services.validation import validate_unique_code
 from mes_config.models.governance import ApprovalStatus
 
 router = APIRouter()
@@ -190,8 +189,6 @@ def get_bor_tooling(bor_tooling_id: int, db: Session = Depends(get_db)):
 @router.post("/bor-tooling", response_model=schemas.BorToolingResponse, status_code=status.HTTP_201_CREATED)
 def create_bor_tooling(tooling: schemas.BorToolingCreate, db: Session = Depends(get_db)):
     """Create a new BoR tooling"""
-    validate_unique_code(db, models.BorTooling, "tooling_code", tooling.tooling_code)
-    
     db_tooling = models.BorTooling(**tooling.model_dump())
     db.add(db_tooling)
     db.commit()
@@ -262,8 +259,6 @@ def get_bor_quality_checkpoint(checkpoint_id: int, db: Session = Depends(get_db)
 @router.post("/bor-quality-checkpoints", response_model=schemas.BorQualityCheckpointResponse, status_code=status.HTTP_201_CREATED)
 def create_bor_quality_checkpoint(checkpoint: schemas.BorQualityCheckpointCreate, db: Session = Depends(get_db)):
     """Create a new BoR quality checkpoint"""
-    validate_unique_code(db, models.BorQualityCheckpoint, "checkpoint_code", checkpoint.checkpoint_code)
-    
     db_checkpoint = models.BorQualityCheckpoint(**checkpoint.model_dump())
     db.add(db_checkpoint)
     db.commit()
