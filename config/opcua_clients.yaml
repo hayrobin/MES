@@ -1,0 +1,36 @@
+# OPC UA Clients Configuration
+
+clients:
+  # Example: Connection to a PLC
+  - name: "PLC1"
+    endpoint: "opc.tcp://192.168.1.100:4840"
+    namespace_index: 2
+    reconnect_interval: 5
+    timeout: 10
+    security_enabled: false
+    
+    # Subscribe to data changes
+    subscriptions:
+      - node_id: "ns=2;s=Temperature"
+        publishing_interval: 1000
+      
+      - node_id: "ns=2;s=Pressure"
+        publishing_interval: 1000
+      
+      - node_id: "ns=2;s=FlowRate"
+        publishing_interval: 1000
+      
+      - node_id: "ns=2;s=ProductionCount"
+        publishing_interval: 2000
+  
+  # Example: Connection to SCADA system
+  # - name: "SCADA1"
+  #   endpoint: "opc.tcp://192.168.1.200:4840"
+  #   namespace_index: 2
+  #   reconnect_interval: 5
+  #   timeout: 10
+  #   security_enabled: false
+  #   
+  #   subscriptions:
+  #     - node_id: "ns=2;s=SystemStatus"
+  #       publishing_interval: 5000

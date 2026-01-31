@@ -1,0 +1,126 @@
+# Modbus TCP Devices Configuration
+
+devices:
+  # Example: Temperature sensor module
+  - name: "TempSensor1"
+    host: "192.168.1.50"
+    port: 502
+    unit_id: 1
+    polling_interval: 2
+    timeout: 5
+    reconnect_interval: 5
+    
+    registers:
+      - name: "Temperature"
+        register_type: "input_register"
+        address: 0
+        count: 2
+        data_type: "float32"
+        scale: 1.0
+        offset: 0.0
+        unit: "°C"
+      
+      - name: "Humidity"
+        register_type: "input_register"
+        address: 2
+        count: 2
+        data_type: "float32"
+        scale: 1.0
+        offset: 0.0
+        unit: "%"
+  
+  # Example: Variable frequency drive (VFD)
+  - name: "VFD1"
+    host: "192.168.1.51"
+    port: 502
+    unit_id: 1
+    polling_interval: 1
+    timeout: 5
+    reconnect_interval: 5
+    
+    registers:
+      # Read registers
+      - name: "MotorSpeed"
+        register_type: "input_register"
+        address: 100
+        count: 1
+        data_type: "uint16"
+        scale: 1.0
+        offset: 0.0
+        unit: "RPM"
+      
+      - name: "MotorCurrent"
+        register_type: "input_register"
+        address: 101
+        count: 2
+        data_type: "float32"
+        scale: 1.0
+        offset: 0.0
+        unit: "A"
+      
+      - name: "RunStatus"
+        register_type: "coil"
+        address: 0
+        count: 1
+        data_type: "bool"
+        scale: 1.0
+        offset: 0.0
+        unit: ""
+      
+      # Write registers (for control)
+      - name: "SpeedSetpoint"
+        register_type: "holding_register"
+        address: 200
+        count: 1
+        data_type: "uint16"
+        scale: 1.0
+        offset: 0.0
+        unit: "RPM"
+  
+  # Example: I/O Module
+  - name: "IO_Module1"
+    host: "192.168.1.52"
+    port: 502
+    unit_id: 1
+    polling_interval: 1
+    timeout: 5
+    reconnect_interval: 5
+    
+    registers:
+      # Digital inputs
+      - name: "EmergencyStop"
+        register_type: "discrete_input"
+        address: 0
+        count: 1
+        data_type: "bool"
+        scale: 1.0
+        offset: 0.0
+        unit: ""
+      
+      - name: "StartButton"
+        register_type: "discrete_input"
+        address: 1
+        count: 1
+        data_type: "bool"
+        scale: 1.0
+        offset: 0.0
+        unit: ""
+      
+      # Digital outputs
+      - name: "RunIndicator"
+        register_type: "coil"
+        address: 0
+        count: 1
+        data_type: "bool"
+        scale: 1.0
+        offset: 0.0
+        unit: ""
+      
+      - name: "AlarmLight"
+        register_type: "coil"
+        address: 1
+        count: 1
+        data_type: "bool"
+        scale: 1.0
+        offset: 0.0
+        unit: ""

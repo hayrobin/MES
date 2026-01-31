@@ -1,0 +1,80 @@
+version: '3.8'
+
+services:
+  # MES Application
+  mes:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    container_name: factory-mes
+    ports:
+      - "8000:8000"  # API
+      - "4840:4840"  # OPC UA Server
+    environment:
+      - MES_DATABASE__TYPE=postgresql
+      - MES_DATABASE__HOST=postgres
+      - MES_DATABASE__PORT=5432
+      - MES_DATABASE__DATABASE=mes_db
+      - MES_DATABASE__USERNAME=mes_user
+      - MES_DATABASE__PASSWORD=mes_password
+      - MES_LOG_LEVEL=INFO
+    volumes:
+      - ../config:/app/config:ro
+      - mes-data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - mes-network
+  
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: mes-postgres
+    environment:
+      - POSTGRES_DB=mes_db
+      - POSTGRES_USER=mes_user
+      - POSTGRES_PASSWORD=mes_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mes_user -d mes_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - mes-network
+  
+  # Optional: pgAdmin for database management
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: mes-pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@factory.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_CONFIG_SERVER_MODE=False
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - mes-network
+
+volumes:
+  mes-data:
+    driver: local
+  postgres-data:
+    driver: local
+  pgadmin-data:
+    driver: local
+
+networks:
+  mes-network:
+    driver: bridge
