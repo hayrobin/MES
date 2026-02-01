@@ -156,7 +156,7 @@ class OEECalculator:
                 ProductionLog.timestamp >= start_time,
                 ProductionLog.timestamp < end_time
             )
-        ).scalar() or 0
+        ).scalar() or Decimal('0')
         
         # Get total rejected pieces
         rejected = self.db.query(
@@ -171,10 +171,11 @@ class OEECalculator:
                 QualityInspection.inspection_time < end_time,
                 QualityInspection.inspection_result == 'FAIL'
             )
-        ).scalar() or 0
+        ).scalar() or Decimal('0')
         
-        total_pieces = int(produced) if produced else 0
-        rejected_pieces = int(rejected) if rejected else 0
+        # Convert to int for piece counts, rounding to nearest integer
+        total_pieces = int(round(float(produced))) if produced else 0
+        rejected_pieces = int(round(float(rejected))) if rejected else 0
         good_pieces = max(0, total_pieces - rejected_pieces)
         
         return {

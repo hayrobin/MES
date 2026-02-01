@@ -7,10 +7,11 @@ import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { oeeAPI } from '../../services/api';
 import OEECard from '../../components/dashboards/OEECard';
+import { formatDateForInput } from '../../utils/dateUtils';
 
 const ProductionOEE: React.FC = () => {
   const [equipmentId, setEquipmentId] = useState(1);
-  const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+  const [date, setDate] = useState(formatDateForInput(new Date()));
 
   const { data: oeeData, isLoading } = useQuery({
     queryKey: ['oeeBreakdown', equipmentId, date],

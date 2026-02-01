@@ -2,12 +2,13 @@
 Database configuration and dependency
 """
 
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 
 # Database URL - can be configured via environment variables
-DATABASE_URL = "sqlite:///./mes_execution.db"
+DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///./mes_execution.db')
 
 # Create engine
 engine = create_engine(

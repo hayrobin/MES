@@ -31,7 +31,23 @@ class AIAssistant:
         Returns:
             Dictionary with response and data
         """
-        query_lower = query.lower()
+        # Input validation and sanitization
+        if not query or not isinstance(query, str):
+            return {
+                "response": "Invalid query provided.",
+                "data": None
+            }
+        
+        # Limit query length to prevent resource exhaustion
+        MAX_QUERY_LENGTH = 500
+        if len(query) > MAX_QUERY_LENGTH:
+            return {
+                "response": f"Query too long. Maximum length is {MAX_QUERY_LENGTH} characters.",
+                "data": None
+            }
+        
+        # Basic sanitization - strip whitespace and convert to lowercase for comparison
+        query_lower = query.strip().lower()
         
         # Intent detection
         if "running" in query_lower or "in progress" in query_lower:

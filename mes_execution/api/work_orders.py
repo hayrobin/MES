@@ -5,6 +5,7 @@ Work Orders API Endpoints
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
+from pydantic import BaseModel
 
 from ..database import get_db
 from ..services.work_order_service import WorkOrderService
@@ -79,16 +80,22 @@ def create_work_order(
     return service.create_work_order(work_order)
 
 
+class WorkOrderStartRequest(BaseModel):
+    """Schema for starting a work order"""
+    operator_name: Optional[str] = None
+
+
 @router.post("/{work_order_id}/start", response_model=WorkOrderResponse)
 def start_work_order(
     work_order_id: int,
-    operator_name: Optional[str] = None,
+    request: Optional[WorkOrderStartRequest] = None,
     db: Session = Depends(get_db)
 ):
     """
     Start a work order
     """
     service = WorkOrderService(db)
+    operator_name = request.operator_name if request else None
     
     try:
         return service.start_work_order(work_order_id, operator_name)

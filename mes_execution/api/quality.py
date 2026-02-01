@@ -49,7 +49,7 @@ def record_quality_inspection(
         ).first()
         
         if work_order:
-            work_order.rejected_quantity = (work_order.rejected_quantity or 0) + inspection.rejected_quantity
+            work_order.rejected_quantity = (work_order.rejected_quantity or 0) + (inspection.rejected_quantity or 0)
             db.commit()
     
     return inspection
