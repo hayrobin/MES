@@ -1,0 +1,37 @@
+# Frontend - Node.js dependencies
+node_modules/
+dist/
+build/
+*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Editor directories
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backend
+*.db
+*.sqlite
+*.sqlite3
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Test coverage
+coverage/
+.coverage
+htmlcov/
